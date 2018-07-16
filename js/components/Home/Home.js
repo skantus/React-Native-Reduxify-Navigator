@@ -1,24 +1,23 @@
-import React from "react";
+import React, { Component } from "react";
 import { View, Button } from "react-native";
-import { shape } from "prop-types";
+import { func } from "prop-types";
 import style from "./style";
 
-class Home extends React.Component {
+class Home extends Component {
   render() {
-    const {
-      navigation: { navigate }
-    } = this.props;
+    const { goToDetails, goToProfile } = this.props;
     return (
       <View style={style.container}>
-        <Button title="Go to Details" onPress={() => navigate("Details")} />
-        <Button title="Go to Profile" onPress={() => navigate("Profile")} />
+        <Button title="Go to Details" onPress={goToDetails} />
+        <Button title="Go to Profile" onPress={goToProfile} />
       </View>
     );
   }
 }
 
 Home.propTypes = {
-  navigation: shape({}).isRequired
+  goToDetails: func.isRequired,
+  goToProfile: func.isRequired
 };
 
 export default Home;
